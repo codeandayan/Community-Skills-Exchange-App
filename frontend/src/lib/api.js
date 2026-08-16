@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Base URL for our Strapi backend
-const API_URL = "http://localhost:1337/api";
+const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/api`;;
 
 // Helper to get auth token
 const getToken = () => {

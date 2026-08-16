@@ -1,4 +1,4 @@
-module.exports = [
+module.exports = ({ env }) => [
   "strapi::logger",
   "strapi::errors",
   {
@@ -8,7 +8,12 @@ module.exports = [
         useDefaults: true,
         directives: {
           "connect-src": ["'self'", "https:"],
-          "img-src": ["'self'", "data:", "blob:", "http://localhost:1337"],
+          "img-src": [
+            "'self'",
+            "data:",
+            "blob:",
+            "http://localhost:1337",
+          ],
           "media-src": ["'self'", "data:", "blob:"],
         },
       },
@@ -17,9 +22,25 @@ module.exports = [
   {
     name: "strapi::cors",
     config: {
-      origin: ["http://localhost:3000"],
-      methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
-      headers: ["Content-Type", "Authorization", "Origin", "Accept"],
+      origin: [
+        "http://localhost:3000",
+        env("FRONTEND_URL", "http://localhost:3000"),
+      ],
+      methods: [
+        "GET",
+        "POST",
+        "PUT",
+        "PATCH",
+        "DELETE",
+        "HEAD",
+        "OPTIONS",
+      ],
+      headers: [
+        "Content-Type",
+        "Authorization",
+        "Origin",
+        "Accept",
+      ],
     },
   },
   "strapi::poweredBy",
