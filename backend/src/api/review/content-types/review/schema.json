@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reviews",
+  "info": {
+    "singularName": "review",
+    "pluralName": "reviews",
+    "displayName": "Review"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "rating": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    },
+    "comment": {
+      "type": "text"
+    },
+    "reviewer": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "review"
+    },
+    "skill": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::skill.skill",
+      "inversedBy": "review"
+    },
+    "booking": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::booking.booking",
+      "mappedBy": "review"
+    }
+  }
+}

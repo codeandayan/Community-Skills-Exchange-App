@@ -1,0 +1,71 @@
+{
+  "kind": "collectionType",
+  "collectionName": "skills",
+  "info": {
+    "singularName": "skill",
+    "pluralName": "skills",
+    "displayName": "Skill"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "IT",
+        "Arts",
+        "Education",
+        "Household",
+        "Health",
+        "Other"
+      ]
+    },
+    "skill_type": {
+      "type": "enumeration",
+      "enum": [
+        "Offering",
+        "Requesting"
+      ]
+    },
+    "location": {
+      "type": "string"
+    },
+    "users_permissions_users": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "skill"
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review"
+    },
+    "booking": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::booking.booking",
+      "mappedBy": "skill"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "skills"
+    },
+    "description": {
+      "type": "string"
+    },
+    "review": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::review.review",
+      "mappedBy": "skill"
+    }
+  }
+}
