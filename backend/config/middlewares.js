@@ -20,29 +20,16 @@ module.exports = ({ env }) => [
     },
   },
   {
-    name: "strapi::cors",
-    config: {
-      origin: [
-        "http://localhost:3000",
-        env("FRONTEND_URL", "http://localhost:3000"),
-      ],
-      methods: [
-        "GET",
-        "POST",
-        "PUT",
-        "PATCH",
-        "DELETE",
-        "HEAD",
-        "OPTIONS",
-      ],
-      headers: [
-        "Content-Type",
-        "Authorization",
-        "Origin",
-        "Accept",
-      ],
-    },
+  name: 'strapi::cors',
+  config: {
+    origin: [
+      'http://localhost:3000',
+      'https://community-skills-exchange-app-production.up.railway.app',
+    ],
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
+    headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
   },
+},,
   "strapi::poweredBy",
   "strapi::query",
   "strapi::body",
